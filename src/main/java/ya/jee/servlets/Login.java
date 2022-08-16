@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Login
@@ -35,28 +36,14 @@ public class Login extends HttpServlet {
 		if (login == null) login ="";
 		if (password == null) password = "";
 		
-		response.setContentType("text/html");
-		try (PrintWriter out = response.getWriter()){
-			out.println("<!Doctype html>");
-			out.println("<html>");
-			out.println("		<head>");
-			out.println("			<title>Veuillez vous identifier</title>");
-			out.println("			<link rel='stylesheet' type='text/css' href='styles.css' />");
-			out.println("		</head>");
-			out.println("     <body>");
-			out.println("     	<h1>Veuillez vous identifier</h1>");
-			out.println("     	<h1>" + new Date() + "</h1>");
-			         
-			out.println("			<form method='post' action='login'>");
-			out.println("			<label for='txtLogin'>Login</label>");
-			out.println("     		<input id = 'txtLogin' name='txtLogin' type='text' value=' "+ login +" ' autofocus/> <br/>");
-			out.println("			<label for='txtPassword'>Password</label>");
-			out.println("     		<input id='txtPassword' name='txtPassword' type='password' value = ' " + password + " '/> <br/>");
-			out.println("     		<br/>");
-			out.println("     		<input name='btnConnect' type='submit' /> <br/>");
-			out.println("     	</form>");
-			out.println("</htlm>");
-		}
+		HttpSession session = request.getSession(true);
+		session.setAttribute("login", login);
+		session.setAttribute("password", password);
+		
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		
+
+		
 	}
 
 	/**
@@ -66,14 +53,17 @@ public class Login extends HttpServlet {
 		String login = request.getParameter("txtLogin");
 		String password = request.getParameter("txtPassword");
 		
-		if( login.equals("Y@ssine") && password.equals("1983")) {
-			response.setContentType("text/html");
-			try(PrintWriter out = response.getWriter()){
-				out.println("Connexion Ok");
-			}
-		} else {
+		HttpSession session = request.getSession(true);
+		session.setAttribute("login", login);
+		session.setAttribute("password", password);
 		
-			doGet(request, response);
+		System.out.println("in the doPost");
+		if( login.equals("Y@ssine") && password.equals("1983")) {
+			request.getRequestDispatcher("/connected.jsp").forward(request, response);
+			session.setAttribute("isConnected", true);
+		} else {		
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			session.setAttribute("isConnected", false);
 		}
 	}
 
