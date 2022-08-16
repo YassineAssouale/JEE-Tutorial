@@ -13,9 +13,9 @@
 
 	<form method="post" action="login">
 		<label for='txtLogin'>Login : </label>
-		<input id='txtLogin' name='txtLogin' type='text' value='<%= session.getAttribute("login") %>' autofocus /><br/>
+		<input id='txtLogin' name='txtLogin' type='text' value='${login}' autofocus /><br/>
 		<label for='txtPassword'>Login : </label>
-		<input id='txtPassword' name='txtPassword' type='password' value='<%= session.getAttribute("password") %>' /><br/>
+		<input id='txtPassword' name='txtPassword' type='password' value='${password}' /><br/>
 		<input name='btnConnect' type='submit' /><br/>
 	
 	</form>
