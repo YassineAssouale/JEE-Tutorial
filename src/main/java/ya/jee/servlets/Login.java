@@ -36,6 +36,7 @@ public class Login extends HttpServlet {
 		if (login == null) login ="";
 		if (password == null) password = "";
 		
+		System.out.println("in the doGet");
 		HttpSession session = request.getSession(true);
 		session.setAttribute("login", login);
 		session.setAttribute("password", password);

@@ -12,5 +12,6 @@
 	<h1>Welcome to My Application</h1>
 
 	<p>Welcome M. ${login}</p>
+	<p>Is M. ${login} connected ? Answer = ${isConnected}</p>
 </body>
 </html>
