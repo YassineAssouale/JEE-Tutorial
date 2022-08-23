@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns="/lifeCycle", loadOnStartup = 1)
 public class LifeCycleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int counter = 0;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,8 +53,10 @@ public class LifeCycleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.setHeader("Demo", "A value");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		counter++;
+		System.out.println("In doGet " + counter);
 	}
 
 	/**

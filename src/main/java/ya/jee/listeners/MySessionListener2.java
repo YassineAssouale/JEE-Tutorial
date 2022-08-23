@@ -1,4 +1,4 @@
-package ya.jee.servlets;
+package ya.jee.listeners;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionAttributeListener;

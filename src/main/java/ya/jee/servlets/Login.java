@@ -36,10 +36,11 @@ public class Login extends HttpServlet {
 		if (login == null) login ="";
 		if (password == null) password = "";
 		
-		System.out.println("in the doGet");
-		HttpSession session = request.getSession(true);
-		session.setAttribute("login", login);
-		session.setAttribute("password", password);
+		System.out.println("in the doGet - login : " + login + " password : " + password);
+		
+//		HttpSession session = request.getSession(true);
+//		session.setAttribute("login", login);
+//		session.setAttribute("password", password);
 		
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 		
@@ -58,7 +59,8 @@ public class Login extends HttpServlet {
 		session.setAttribute("login", login);
 		session.setAttribute("password", password);
 		
-		System.out.println("in the doPost");
+		System.out.println("in the doPost - login : " + login + " password : " + password);
+		
 		if( login.equals("Y@ssine") && password.equals("1983")) {
 			request.getRequestDispatcher("/connected.jsp").forward(request, response);
 			session.setAttribute("isConnected", true);
