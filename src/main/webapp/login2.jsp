@@ -11,11 +11,11 @@
 <body>
 	<h1>Veuillez vous authentifier</h1>
 
-	<form method="post" action="login">
+	<form method="post" action="loginServlet">
 		<label for='txtLogin'>Login : </label>
-		<input id='txtLogin' name='txtLogin' type='text' value='${login}' autofocus /><br/><br/>
+		<input id='txtLogin' name='login2' type='text' value='${login}' autofocus /><br/><br/>
 		<label for='txtPassword'>Password : </label>
-		<input id='txtPassword' name='txtPassword' type='password' value='${password}' /><br/><br/>
+		<input id='txtPassword' name='password2' type='password' value='${password}' /><br/><br/>
 		<input name='btnConnect' type='submit' /><br/>
 	
 	</form>

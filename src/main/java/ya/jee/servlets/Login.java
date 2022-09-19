@@ -38,9 +38,9 @@ public class Login extends HttpServlet {
 		
 		System.out.println("in the doGet - login : " + login + " password : " + password);
 		
-//		HttpSession session = request.getSession(true);
-//		session.setAttribute("login", login);
-//		session.setAttribute("password", password);
+		HttpSession session = request.getSession(true);
+		session.setAttribute("login", login);
+		session.setAttribute("password", password);
 		
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 		

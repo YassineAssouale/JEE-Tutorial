@@ -25,8 +25,9 @@ public class MyFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request	, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		
-		
+		HttpServletResponse response2 = (HttpServletResponse) response;
+		if (response2.getHeader("value").equals("Demo"))
+			chain.doFilter(request, response);
 		chain.doFilter(request , new HttpServletResponseWrapper( (HttpServletResponse) response){
 			@Override
 			public void setHeader(String name, String value) {

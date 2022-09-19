@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LifeCycleServlet
  */
-@WebServlet(urlPatterns="/lifeCycle", loadOnStartup = 1)
+@WebServlet(urlPatterns="/lifeCycle", loadOnStartup = 1
+)
 public class LifeCycleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private int counter = 0;
@@ -20,14 +21,14 @@ public class LifeCycleServlet extends HttpServlet {
      */
     public LifeCycleServlet() {
         super();
-        System.out.println("In Constructor : Servlet created");
+        System.out.println("In LifeCycleServlet Constructor : Servlet created");
     }
     
     @Override
     /*
      * Méthode qui permet d'initialiser notre servlet
-     * On peut manipuler des les paramètres du fichier web.xml, pas possible dans le 
-     * constructeur car la servlet n'est pas complétement initialiser
+     * On peut manipuler les paramètres du fichier web.xml, pas possible dans le 
+     * constructeur car la servlet n'est pas complètement initialiser
      * loadOnStartup = 1 permet d'initialiser notre servlet au démarage de l'application
      * et non pas au premier appel doGet, l'utilisateur n'aura pas à attendre si l'initialisation dûre longtemps
      * 
@@ -36,7 +37,7 @@ public class LifeCycleServlet extends HttpServlet {
     	// TODO Auto-generated method stub
     	super.init();
         String dataBaseUrl = this.getServletContext().getInitParameter("DATABASE_URL");
-    	System.out.println("In init " + dataBaseUrl + " " + this.getServletContext());
+    	System.out.println("In LifeCycleServlet init " + dataBaseUrl + " " + this.getServletContext());
     	
     }
     
@@ -53,10 +54,10 @@ public class LifeCycleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setHeader("Demo", "A value");
+		response.setHeader("test", "A value");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		counter++;
-		System.out.println("In doGet " + counter);
+		System.out.println("In LifeCycleServlet doGet " + counter);
 	}
 
 	/**
@@ -74,7 +75,7 @@ public class LifeCycleServlet extends HttpServlet {
 	public void destroy() {
 		// TODO Auto-generated method stub
 		super.destroy();
-		System.out.println("In destroy");
+		System.out.println("In LifeCycleServlet destroy");
 	}
 
 }
